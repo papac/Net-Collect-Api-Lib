@@ -18,9 +18,11 @@ class CurlHttp
     {
         $curl = curl_init($url);
 
+        echo $url."\n";
+
         if (is_array($payload)) {
             $payload = json_encode($payload);
-            var_dump($payload);
+            echo $payload."\n";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
             curl_setopt($curl, CURLOPT_HTTPHEADER, [
                 'Content-Length: '.strlen($payload),
@@ -34,6 +36,7 @@ class CurlHttp
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
 
         $response = curl_exec($curl);
+        echo $response."\n";
 
         if (curl_errno($curl)) {
             $message = curl_error($curl);

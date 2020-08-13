@@ -11,11 +11,16 @@ class TransactionManager extends BaseManager
      *
      * @param string $amount
      * @param string $number
-     * @return void
+     * @return array
      */
     public function depositMoney($amount, $number)
     {
-        $this->make($amount, $number, 'Depot');
+        try {
+            $response = $this->make($amount, $number, 'Depot');
+            return $response;
+        } catch (\Exception $e) {
+
+        }
     }
 
     /**
@@ -23,11 +28,29 @@ class TransactionManager extends BaseManager
      *
      * @param string $amount
      * @param string $number
-     * @return void
+     * @return array
      */
     public function withdrawMoney($amount, $number)
     {
-        $this->make($amount, $number, 'Retrait');
+        try {
+            $response = $this->make($amount, $number, 'Retrait');
+            return $response;
+        } catch (\Exception $e) {
+            
+        }
+    }
+
+    /**
+     * Withdraw Money validation
+     *
+     * @param string $code
+     * @return array
+     */
+    public function withdrawMoneyValidation($code)
+    {
+        $payload = ['tokenP' => $this->auth->getToken(), 'codeTransaction' => $code];
+
+        return CurlHttp::request('https://www.net-collect.com/Client/Debiter', $payload);
     }
 
     /**
@@ -36,9 +59,9 @@ class TransactionManager extends BaseManager
      * @param string $amount
      * @param string $number
      * @param string $type
-     * @return void
+     * @return array
      */
-    public function make($amount, $number, $type)
+    private function make($amount, $number, $type)
     {
         $payload = [
             'TokenP' => $this->auth->getToken(),
@@ -48,5 +71,7 @@ class TransactionManager extends BaseManager
         ];
 
         $response = CurlHttp::request('https://www.net-collect.com/Demande/Operation', $payload);
+
+        return $response;
     }
 }

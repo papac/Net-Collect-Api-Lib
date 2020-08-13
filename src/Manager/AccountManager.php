@@ -51,7 +51,7 @@ class AccountManager extends BaseManager
      * Client account validator
      *
      * @param string $code
-     * @return void
+     * @return array
      */
     public function validation($code)
     {

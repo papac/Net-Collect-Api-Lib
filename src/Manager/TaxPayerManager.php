@@ -11,7 +11,7 @@ class TaxPayerManager extends BaseManager
      *
      * @param string $type
      * @param string $search
-     * @return void
+     * @return array
      */
     public function search($type, $search)
     {
@@ -33,7 +33,7 @@ class TaxPayerManager extends BaseManager
      * Get list of tax payer communes
      *
      * @param int $taxpayer_id
-     * @return void
+     * @return array
      */
     public function communes($taxpayer_id)
     {
@@ -54,7 +54,7 @@ class TaxPayerManager extends BaseManager
      * Get list of tax payer communes
      *
      * @param int $taxpayer_id
-     * @return void
+     * @return array
      */
     public function activities($taxpayer_id, $commune_id)
     {
@@ -76,9 +76,9 @@ class TaxPayerManager extends BaseManager
     /**
      * Get tax list for tax payer by activity
      *
-     * @param [type] $taxpayer_id
-     * @param [type] $activity_id
-     * @return void
+     * @param int $taxpayer_id
+     * @param int $activity_id
+     * @return array
      */
     public function tax($taxpayer_id, $activity_id)
     {
