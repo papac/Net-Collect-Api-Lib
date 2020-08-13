@@ -1,0 +1,22 @@
+{
+    "name": "cnit/net-collect",
+    "description": "Net Collect API LIB",
+    "type": "library",
+    "license": "PRO-CNIT",
+    "authors": [
+        {
+            "name": "Franck DAKIA",
+            "email": "dakiafranck@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CNIT\\NetCollect\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "8.5.x-dev"
+    }
+}
