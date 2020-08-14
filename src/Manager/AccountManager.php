@@ -29,19 +29,19 @@ class AccountManager extends BaseManager
      * @param string $name
      * @param string $lastname
      * @param int $civility_id
-     * @param string $number
-     * @param string $second_number
+     * @param string $principal_number
+     * @param string $reset_number
      * @return array
      */
-    public function register($name, $lastname, $civility_id, $number, $second_number)
+    public function register($name, $lastname, $civility_id, $principal_number, $reset_number)
     {
         $payload = [
             'tokenP' => $this->auth->getToken(),
-            'TelPrincipal' => $number,
-            'IDCivilite' => $civility_id,
             'Nom' => $name,
             'Prenom' => $lastname,
-            'TelReinitilisation' => $second_number, // NOTE: Peut-être TelReinitialisation
+            'TelPrincipal' => $principal_number,
+            'IDCivilite' => $civility_id,
+            'TelReinitilisation' => $reset_number, // NOTE: Peut-être TelReinitialisation
         ];
 
         return CurlHttp::request('https://www.net-collect.com/Inscription', $payload);

@@ -5,7 +5,7 @@ use \CNIT\NetCollect\Auth\Authentication as NetCollectAuthentication;
 use CNIT\NetCollect\Auth\Token as AuthToken;
 use PHPUnit\Framework\TestCase;
 
-class NetCollectAPITest extends TestCase
+class AuthenticationAPITest extends TestCase
 {
     public function testAuthInstance()
     {
@@ -21,7 +21,6 @@ class NetCollectAPITest extends TestCase
             ->getMock();
         
         $token = $this->createMock(AuthToken::class);
-        $token->method('getToken')->willReturn('MY_TOKEN');
 
         $authentication->method('auth')->willReturn($token);
 
