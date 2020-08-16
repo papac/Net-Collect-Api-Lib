@@ -3,6 +3,10 @@
 namespace CNIT\NetCollect\Manager;
 
 use CNIT\NetCollect\CurlHttp;
+use CNIT\NetCollect\Exception\DepositException;
+use CNIT\NetCollect\Exception\NetCollectContentExpiredOrDisabled;
+use CNIT\NetCollect\Exception\NetCollectContentNotFound;
+use CNIT\NetCollect\Exception\WithdrawException;
 
 class TransactionManager extends BaseManager
 {
@@ -19,7 +23,10 @@ class TransactionManager extends BaseManager
             $response = $this->make($amount, $number, 'Depot');
             return $response;
         } catch (\Exception $e) {
-
+            if (!$e instanceof NetCollectContentNotFound && !$e instanceof NetCollectContentExpiredOrDisabled) {
+                throw new DepositException($e->getMessage(), $e->getCode());
+            }
+            throw $e;
         }
     }
 
@@ -36,7 +43,10 @@ class TransactionManager extends BaseManager
             $response = $this->make($amount, $number, 'Retrait');
             return $response;
         } catch (\Exception $e) {
-            
+            if (!$e instanceof NetCollectContentNotFound && !$e instanceof NetCollectContentExpiredOrDisabled) {
+                throw new WithdrawException($e->getMessage(), $e->getCode());
+            }
+            throw $e;
         }
     }
 
@@ -50,7 +60,11 @@ class TransactionManager extends BaseManager
     {
         $payload = ['tokenP' => $this->auth->getToken(), 'codeTransaction' => $code];
 
-        return CurlHttp::request('https://www.net-collect.com/Client/Debiter', $payload);
+        try {
+            return CurlHttp::request('https://www.net-collect.com/Client/Debiter', $payload);
+        } catch (\Exception $e) {
+
+        }
     }
 
     /**
