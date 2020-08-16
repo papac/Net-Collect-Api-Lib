@@ -63,7 +63,7 @@ class TransactionManager extends BaseManager
         try {
             return CurlHttp::request('https://www.net-collect.com/Client/Debiter', $payload);
         } catch (\Exception $e) {
-
+            throw new WithdrawException("Impossible de vérifier le code retrait");
         }
     }
 
