@@ -51,7 +51,7 @@ class TaxPayerManager extends BaseManager
     }
 
     /**
-     * Get list of tax payer communes
+     * Get list of tax payer activities
      *
      * @param int $taxpayer_id
      * @return array
