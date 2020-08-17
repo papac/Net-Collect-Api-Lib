@@ -78,7 +78,7 @@ class TransactionManager extends BaseManager
     private function make($amount, $number, $type)
     {
         $payload = [
-            'TokenP' => $this->auth->getToken(),
+            'tokenP' => $this->auth->getToken(),
             'typeOperation' => $type,
             'montant' => $amount,
             'numclient' => $number,
