@@ -23,10 +23,10 @@ $response = $account_manager->balance($number = '49929598');
 $tax_payer_manager = new TaxPayerManager($authentication);
 // Search tax payer
 $response = $tax_payer_manager->search('', 'code');
-// Search tax payer communes
-$response = $tax_payer_manager->communes($tax_payer_id = 1);
+// Search tax payer municipalities
+$response = $tax_payer_manager->municipalities($tax_payer_id = 1);
 // Search tax payer activities
-$response = $tax_payer_manager->activities($tax_payer_id = 1, $commune_id = 1);
+$response = $tax_payer_manager->activities($tax_payer_id = 1, $municipality_id = 1);
 // Search tax payer taxes
 $response = $tax_payer_manager->tax($tax_payer_id = 1, $activity_id = 1);
 

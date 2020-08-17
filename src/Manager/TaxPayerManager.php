@@ -30,12 +30,12 @@ class TaxPayerManager extends BaseManager
     }
 
     /**
-     * Get list of tax payer communes
+     * Get list of tax payer municipalities
      *
      * @param int $taxpayer_id
      * @return array
      */
-    public function communes($taxpayer_id)
+    public function municipalities($taxpayer_id)
     {
         $taxpayer_id = (int) $taxpayer_id;
 
@@ -54,17 +54,18 @@ class TaxPayerManager extends BaseManager
      * Get list of tax payer activities
      *
      * @param int $taxpayer_id
+     * @param int $municipality_id
      * @return array
      */
-    public function activities($taxpayer_id, $commune_id)
+    public function activities($taxpayer_id, $municipality_id)
     {
         $taxpayer_id = (int) $taxpayer_id;
-        $commune_id = (int) $commune_id;
+        $municipality_id = (int) $municipality_id;
 
         $url = sprintf(
             'https://www.net-collect.com/netCollect/%i/%i/%s',
             $taxpayer_id,
-            $commune_id,
+            $municipality_id,
             $this->auth->getToken()
         );
 
