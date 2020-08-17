@@ -22,7 +22,7 @@ $response = $account_manager->balance($number = '49929598');
 // Tax Payer Manager
 $tax_payer_manager = new TaxPayerManager($authentication);
 // Search tax payer
-$response = $tax_payer_manager->search('', 'code');
+$response = $tax_payer_manager->search('Samer', 'code');
 // Search tax payer municipalities
 $response = $tax_payer_manager->municipalities($tax_payer_id = 1);
 // Search tax payer activities
