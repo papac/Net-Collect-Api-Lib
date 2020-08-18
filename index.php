@@ -7,8 +7,10 @@ use CNIT\NetCollect\Manager\AccountManager;
 use CNIT\NetCollect\Manager\TaxPayerManager;
 use CNIT\NetCollect\Manager\TransactionManager;
 
+$key = "test";
+$secret = "test";
 // Authentication
-$authentication = (new Authentication('test', 'test'))->auth();
+$authentication = (new Authentication($key, $secret))->auth();
 
 // Account Manager
 $account_manager = new AccountManager($authentication);
