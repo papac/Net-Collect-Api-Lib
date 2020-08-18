@@ -2,8 +2,8 @@
 
 namespace CNIT\NetCollect;
 
-use CNIT\NetCollect\Exception\NetCollectContentExpiredOrDisabled;
-use CNIT\NetCollect\Exception\NetCollectContentNotFound;
+use CNIT\NetCollect\Exception\NetCollectErrorException;
+use CNIT\NetCollect\Exception\NetCollectExpiredOrDisabledException;
 
 class CurlHttp
 {
@@ -52,13 +52,17 @@ class CurlHttp
 
         $content = json_decode($response, true, 512, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_IGNORE);
 
+        if (isset($content['fault'])) {
+            throw new NetCollectErrorException($content['fault']['faultstring']);
+        }
+
         // Check the request error information
         if (isset($content['nCode'])) {
             if ($content['nCode'] == 404) {
-                throw new NetCollectContentNotFound($content['sContenu']);
+                throw new NetCollectErrorException($content['sContenu']);
             }
             if ($content['nCode'] == 401) {
-                throw new NetCollectContentExpiredOrDisabled($content['sContenu']);
+                throw new NetCollectExpiredOrDisabledException($content['sContenu']);
             }
         }
 

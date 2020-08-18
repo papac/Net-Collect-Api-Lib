@@ -4,8 +4,8 @@ namespace CNIT\NetCollect\Manager;
 
 use CNIT\NetCollect\CurlHttp;
 use CNIT\NetCollect\Exception\DepositException;
-use CNIT\NetCollect\Exception\NetCollectContentExpiredOrDisabled;
-use CNIT\NetCollect\Exception\NetCollectContentNotFound;
+use CNIT\NetCollect\Exception\NetCollectExpiredOrDisabledException;
+use CNIT\NetCollect\Exception\NetCollectNotFoundException;
 use CNIT\NetCollect\Exception\WithdrawException;
 
 class TransactionManager extends BaseManager
@@ -23,7 +23,7 @@ class TransactionManager extends BaseManager
             $response = $this->make($amount, $number, 'Depot');
             return $response;
         } catch (\Exception $e) {
-            if (!$e instanceof NetCollectContentNotFound && !$e instanceof NetCollectContentExpiredOrDisabled) {
+            if (!$e instanceof NetCollectNotFoundException && !$e instanceof NetCollectExpiredOrDisabledException) {
                 throw new DepositException($e->getMessage(), $e->getCode());
             }
             throw $e;
@@ -43,7 +43,7 @@ class TransactionManager extends BaseManager
             $response = $this->make($amount, $number, 'Retrait');
             return $response;
         } catch (\Exception $e) {
-            if (!$e instanceof NetCollectContentNotFound && !$e instanceof NetCollectContentExpiredOrDisabled) {
+            if (!$e instanceof NetCollectNotFoundException && !$e instanceof NetCollectExpiredOrDisabledException) {
                 throw new WithdrawException($e->getMessage(), $e->getCode());
             }
             throw $e;
