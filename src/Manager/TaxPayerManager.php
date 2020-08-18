@@ -18,7 +18,7 @@ class TaxPayerManager extends BaseManager
         $search = addslashes($search);
 
         $url = sprintf(
-            '/netCollect/Contribuable/%s/2/%s/%s',
+            '/netCollect/Contribuable/%s/2/%s',
             $type,
             $search,
             $this->auth->getToken()
@@ -40,7 +40,7 @@ class TaxPayerManager extends BaseManager
         $taxpayer_id = (int) $taxpayer_id;
 
         $url = sprintf(
-            '/netCollect/%s/%s',
+            '/netCollect/Contribuable/%s',
             $taxpayer_id,
             $this->auth->getToken()
         );
@@ -63,7 +63,7 @@ class TaxPayerManager extends BaseManager
         $municipality_id = (int) $municipality_id;
 
         $url = sprintf(
-            '/netCollect/%s/%s/%s',
+            '/netCollect/Contribuable/%s/%s',
             $taxpayer_id,
             $municipality_id,
             $this->auth->getToken()
@@ -87,7 +87,7 @@ class TaxPayerManager extends BaseManager
         $activity_id = (int) $activity_id;
 
         $url = sprintf(
-            '/netCollect/Taxes/%s/%s/%s',
+            '/netCollect/Taxes/%s/%s',
             $taxpayer_id,
             $activity_id,
             $this->auth->getToken()

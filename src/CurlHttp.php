@@ -28,6 +28,8 @@ class CurlHttp
             echo "PAYLOAD:\n".$payload."\n";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
             $headers[] = 'Content-Length: '.strlen($payload);
+        } else {
+            $headers[] = 'Content-Length: 0';
         }
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
@@ -52,9 +54,9 @@ class CurlHttp
 
         $content = json_decode($response, true, 512, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_IGNORE);
 
-        if (isset($content['fault'])) {
-            throw new NetCollectErrorException($content['fault']['faultstring']);
-        }
+        // if (isset($content['fault'])) {
+        //     throw new NetCollectErrorException($content['fault']['faultstring']);
+        // }
 
         // Check the request error information
         if (isset($content['nCode'])) {
