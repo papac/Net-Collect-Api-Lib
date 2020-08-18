@@ -17,7 +17,7 @@ $account_manager = new AccountManager($authentication);
 // Register a new account
 $response = $account_manager->register('DAKIA', 'Franck', AccountManager::CIVILITE_MONSIEUR, '49929598', '52797005');
 // Validation de compte avec le code OTP
-$response = $account_manager->validation($code = 'CNIT');
+$response = $account_manager->validation($code = '1GYY');
 // Get balance
 $response = $account_manager->balance($number = '49929598');
 
