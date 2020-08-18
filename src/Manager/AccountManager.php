@@ -36,7 +36,7 @@ class AccountManager extends BaseManager
     public function register($name, $lastname, $civility_id, $principal_number, $reset_number)
     {
         $payload = [
-            'tokenP' => $this->auth->getToken(),
+            'token' => $this->auth->getToken(),
             'Nom' => $name,
             'Prenom' => $lastname,
             'TelPrincipal' => $principal_number,
@@ -56,7 +56,7 @@ class AccountManager extends BaseManager
     public function validation($code)
     {
         $payload = [
-            'tokenP' => $this->auth->getToken(),
+            'token' => $this->auth->getToken(),
             'code' => $code
         ];
 

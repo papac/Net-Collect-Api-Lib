@@ -58,7 +58,7 @@ class TransactionManager extends BaseManager
      */
     public function withdrawMoneyValidation($code)
     {
-        $payload = ['tokenP' => $this->auth->getToken(), 'codeTransaction' => $code];
+        $payload = ['token' => $this->auth->getToken(), 'codeTransaction' => $code];
 
         try {
             return CurlHttp::request('/Client/Debiter', $payload);
@@ -78,7 +78,7 @@ class TransactionManager extends BaseManager
     private function make($amount, $number, $operation_type)
     {
         $payload = [
-            'tokenP' => $this->auth->getToken(),
+            'token' => $this->auth->getToken(),
             'typeOperation' => $operation_type,
             'montant' => $amount,
             'numclient' => $number,

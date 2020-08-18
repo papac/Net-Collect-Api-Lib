@@ -30,13 +30,12 @@ class CurlHttp
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json',]);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
         curl_setopt($curl, CURLOPT_TIMEOUT, 0);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-        
+        // curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+
         $response = curl_exec($curl);
         echo $response."\n\n";
 
