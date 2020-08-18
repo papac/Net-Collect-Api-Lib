@@ -42,7 +42,7 @@ class Authentication
     {
         $payload = ['Key' => $this->key, 'Secret' => $this->secret];
 
-        $response = CurlHttp::request('https://www.net-collect.com/Auth', $payload);
+        $response = CurlHttp::request('/Auth', $payload);
 
         return new AuthToken($response['Token'], $response['Code'], $response['Contenu']);
     }

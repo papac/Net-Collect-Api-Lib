@@ -7,6 +7,8 @@ use CNIT\NetCollect\Exception\NetCollectContentNotFound;
 
 class CurlHttp
 {
+    const BASE_URL = "https://www.net-collect.com";
+
     /**
      * Make post Request
      *
@@ -16,7 +18,7 @@ class CurlHttp
      */
     public static function request($url, array $payload = null)
     {
-        $curl = curl_init($url);
+        $curl = curl_init(CurlHttp::BASE_URL.$url);
 
         echo $url."\n";
 
@@ -24,9 +26,6 @@ class CurlHttp
             $payload = json_encode($payload);
             echo $payload."\n";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, [
-                'Content-Length: '.strlen($payload),
-            ]);
         }
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, [

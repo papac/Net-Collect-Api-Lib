@@ -61,7 +61,7 @@ class TransactionManager extends BaseManager
         $payload = ['tokenP' => $this->auth->getToken(), 'codeTransaction' => $code];
 
         try {
-            return CurlHttp::request('https://www.net-collect.com/Client/Debiter', $payload);
+            return CurlHttp::request('/Client/Debiter', $payload);
         } catch (\Exception $e) {
             throw new WithdrawException("Impossible de vérifier le code de retrait");
         }
@@ -84,7 +84,7 @@ class TransactionManager extends BaseManager
             'numclient' => $number,
         ];
 
-        $response = CurlHttp::request('https://www.net-collect.com/Demande/Operation', $payload);
+        $response = CurlHttp::request('/Demande/Operation', $payload);
 
         return $response;
     }

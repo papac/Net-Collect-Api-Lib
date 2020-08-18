@@ -18,7 +18,7 @@ class AccountManager extends BaseManager
      */
     public function balance($number)
     {
-        $url = sprintf('https://www.net-collect.com/SoldeClient/%s/%s', $number, $this->auth->getToken());
+        $url = sprintf('/SoldeClient/%s/%s', $number, $this->auth->getToken());
 
         return CurlHttp::request($url);
     }
@@ -44,7 +44,7 @@ class AccountManager extends BaseManager
             'TelReinitilisation' => $reset_number, // NOTE: Peut-être TelReinitialisation
         ];
 
-        return CurlHttp::request('https://www.net-collect.com/Inscription', $payload);
+        return CurlHttp::request('/Inscription', $payload);
     }
 
     /**
@@ -60,6 +60,6 @@ class AccountManager extends BaseManager
             'code' => $code
         ];
 
-        return CurlHttp::request('https://www.net-collect.com/ValidationInscription', $payload);
+        return CurlHttp::request('/ValidationInscription', $payload);
     }
 }
