@@ -19,25 +19,27 @@ class CurlHttp
     public static function request($url, array $payload = null)
     {
         $curl = curl_init(CurlHttp::BASE_URL.$url);
+        $headers = ['Content-Type: application/json'];
 
-        echo $url."\n";
+        echo "ROUTE: ".$url."\n";
 
         if (is_array($payload)) {
             $payload = json_encode($payload);
-            echo $payload."\n";
+            echo "PAYLOAD:\n".$payload."\n";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+            $headers[] = 'Content-Length: '.strlen($payload);
         }
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json',]);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
         curl_setopt($curl, CURLOPT_TIMEOUT, 0);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        // curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 
         $response = curl_exec($curl);
-        echo $response."\n\n";
+        echo "RESPONSE:\n".$response."\n\n";
 
         if (curl_errno($curl)) {
             $message = curl_error($curl);
