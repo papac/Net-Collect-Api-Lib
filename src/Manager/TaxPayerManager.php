@@ -18,7 +18,7 @@ class TaxPayerManager extends BaseManager
         $search = addslashes($search);
 
         $url = sprintf(
-            '/netCollect/Contribuable/%s/2/%s',
+            '/netCollect/Contribuable/%s/2/%s/%s',
             $type,
             $search,
             $this->auth->getToken()

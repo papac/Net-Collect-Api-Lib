@@ -56,8 +56,8 @@ class AccountManager extends BaseManager
     public function validation($code)
     {
         $payload = [
-            'token' => $this->auth->getToken(),
-            'code' => $code
+            'sToken' => $this->auth->getToken(),
+            'sCode' => $code,
         ];
 
         return CurlHttp::request('/ValidationInscription', $payload);

@@ -7,19 +7,19 @@ use CNIT\NetCollect\Manager\AccountManager;
 use CNIT\NetCollect\Manager\TaxPayerManager;
 use CNIT\NetCollect\Manager\TransactionManager;
 
+// Authentication
 $key = "test";
 $secret = "test";
-// Authentication
 $authentication = (new Authentication($key, $secret))->auth();
 
 // Account Manager
 $account_manager = new AccountManager($authentication);
 // Register a new account
-$response = $account_manager->register('DAKIA', 'Franck', AccountManager::CIVILITE_MONSIEUR, '84497105', '52797005');
+$response = $account_manager->register('DAKIA', 'Franck', AccountManager::CIVILITE_MONSIEUR, '49929598', '52797005');
 // Validation de compte avec le code OTP
 $response = $account_manager->validation($code = '1GYY');
-// Get balance
-$response = $account_manager->balance($number = '49929598');
+// // Get balance
+$response = $account_manager->balance($number = '59367623');
 
 // Tax Payer Manager
 $tax_payer_manager = new TaxPayerManager($authentication);
@@ -35,8 +35,8 @@ $response = $tax_payer_manager->tax($tax_payer_id = 1, $activity_id = 1);
 // Transaction Manager
 $transaction_manager = new TransactionManager($authentication);
 // Depot de fond
-$transaction_manager->depositMoney($amount = "2547880", $number = "49929598");
+$transaction_manager->depositMoney($amount = "5000", $number = "49929598");
 // Retrait de fond
-$transaction_manager->withdrawMoney($amount = "2547880", $number = "49929598");
+$transaction_manager->withdrawMoney($amount = "3000", $number = "49929598");
 // Validation de code
-$transaction_manager->withdrawMoneyValidation($code = "2547880");
+$transaction_manager->withdrawMoneyValidation($code = "B5Q8");
