@@ -1,78 +1,77 @@
+# CREATION DE COMPTE
 ROUTE: /Auth
 PAYLOAD:
 {"Key":"test","Secret":"test"}
 RESPONSE:
-{ "Token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8", "Code":200, "Contenu":"Connexion reussie" }
+{ "Token":"oekRenevzs9fsInDe0uzyZy1Q06M00qr1Pv0mnygWkMQP2ohUKXshWG20Ls4CKryPN04W0Ywfa585MJngRXt1J0oteoyaToKycab", "Code":200, "Contenu":"Connexion reussie" }
 
-[Inscription avec un autre numéro]
 ROUTE: /Inscription
 PAYLOAD:
-{"token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8","Nom":"DAKIA","Prenom":"Franck","TelPrincipal":"84497105","IDCivilite":1,"TelReinitilisation":"52797005"}
+{"token":"oekRenevzs9fsInDe0uzyZy1Q06M00qr1Pv0mnygWkMQP2ohUKXshWG20Ls4CKryPN04W0Ywfa585MJngRXt1J0oteoyaToKycab","Nom":"DAKIA","Prenom":"Franck","TelPrincipal":"49929598","IDCivilite":1,"TelReinitilisation":"52797005"}
 RESPONSE:
-{"fault" : {"faultcode" : "server", "faultstring" : "Erreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle 
-de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors 
-des ajouts.", "detail" : "Appel WL :\nTraitement de 'Procédure globale Inscription (serveur)' (ProcéduresServeur.Inscription), ligne 24\nFonction 'HLitRecherchePremier', syntaxe 0\n\nQue s'est-il passé ?\nErreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors des ajouts.\n\nCode erreur : 70016\nNiveau : erreur fatale\nCode erreur WD55 : 16\n\nDump de l'erreur du module 'WDHFSRV64.DLL' (25.0.277.1).\nIdentifiant des informations détaillées (.err) : 72136\nInformations de débogage :\nIEWDHFSRV=32.10\nModule=<WDHFSRV>\nVersion=<25.0.277.1>\nFonction (7,12)\nInformations supplémentaires :\nEIT_TYPE_WDFILE : <7>\nEIT_IDCODE : <458752>\nEIT_LOGICALTABLENAME : <Client>\nEIT_PATHFIC : <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>\nEIT_SERVEURCS : <localhost:4900>\nEIT_PILEWL :\nProcédure globale Inscription (serveur) (ProcéduresServeur.Inscription), ligne 24\nEIT_DATEHEURE : 18/08/2020 18:56:33\nEIT_CODEHTTP : <500>"}}
+{ "nCode":200, "sContenu":"Un code de validation de l ouverture de compte est envoye au client." }
 
-
-[Normalement cette route n'est pas disponible vue que la demande de Retrait a échoué]
-ROUTE: /ValidationInscription
+# API CONTRIBUABLE
+ROUTE: /Auth
 PAYLOAD:
-{"token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8","code":"1GYY"}
+{"Key":"test","Secret":"test"}
 RESPONSE:
-{ "sNumTel":"", "nCode":900, "sContenu":"Token inactif, veuillez vous authentifier." }
+{ "Token":"b6h2Ve1119r6s2a7XPJcai9boPgusYr0hje8sxpYcyvFMazeV1yanPWt0dPUVsrIrVp7tKQreHjsKtNprP85c1ryg73srssys26r", "Code":200, "Contenu":"Connexion reussie" }
 
-
-ROUTE: /SoldeClient/49929598/eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8
+ROUTE: /netCollect/Contribuable/1/2/BAE1501926181/b6h2Ve1119r6s2a7XPJcai9boPgusYr0hje8sxpYcyvFMazeV1yanPWt0dPUVsrIrVp7tKQreHjsKtNprP85c1ryg73srssys26r
 RESPONSE:
-{"fault" : {"faultcode" : "server", "faultstring" : "Erreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle 
-de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors 
-des ajouts.", "detail" : "Appel WL :\nTraitement de 'Procédure globale SoldeClient (serveur)' (ProcéduresServeur.SoldeClient), ligne 10\nFonction 'HLitRecherche', syntaxe 0\n\nQue s'est-il passé ?\nErreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors des ajouts.\n\nCode erreur : 70016\nNiveau : erreur fatale\nCode erreur WD55 : 16\n\nDump de l'erreur du module 'WDHFSRV64.DLL' (25.0.277.1).\nIdentifiant des informations détaillées (.err) : 72136\nInformations de débogage :\nIEWDHFSRV=32.10\nModule=<WDHFSRV>\nVersion=<25.0.277.1>\nFonction (7,118)\nInformations supplémentaires :\nEIT_TYPE_WDFILE : <7>\nEIT_IDCODE : <458752>\nEIT_LOGICALTABLENAME : <Client>\nEIT_PATHFIC : <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>\nEIT_SERVEURCS : <localhost:4900>\nEIT_PILEWL :\nProcédure globale SoldeClient (serveur) (ProcéduresServeur.SoldeClient), ligne 10\nEIT_DATEHEURE : 18/08/2020 18:56:43\nEIT_CODEHTTP : <500>"}}
+{ "nIdContrCarte":7333, "sNomContrCarte":"KOUASSI KOUAKOU ISIDORE", "sNumcarteContrCarte":"BAE1501926181", "sTelPrincipal":"04930119", "sProffession":"COMMERCANT", "sDateNaissanceContrcarte":"07\/08\/1989", "sResulat":"", "nCodeEtat":200 }
 
-[Utilisé comme dans la documentation]
-ROUTE: /netCollect/Contribuable/code/2/Samer
+ROUTE: /netCollect/BAE1501926181/b6h2Ve1119r6s2a7XPJcai9boPgusYr0hje8sxpYcyvFMazeV1yanPWt0dPUVsrIrVp7tKQreHjsKtNprP85c1ryg73srssys26r
 RESPONSE:
-{"fault" : {"faultcode" : "client", "faultstring" : "Aucun point d'entrée n'a été trouvé pour la ressource /netCollect/Contribuable/code/2/Samer.", "detail" : "Que s'est-il passé ?\nAucun point d'entrée n'a été trouvé pour la ressource /netCollect/Contribuable/code/2/Samer.\n\nCode erreur : 620021\nNiveau : erreur fatale\n\nDump de l'erreur du module 'wd240awws64.dll' (24.0.86.0).\nInformations supplémentaires :\nEIT_CODEHTTP : 
-<404>"}}
+{ "tabListeCommune":[ { "sNomCommune":"MAIRIE D ABENGOUROU", "nIdcommune":24 }, { "sNomCommune":"MAIRIE DE BINGERVILLE", "nIdcommune":2 }, { "sNomCommune":"REGION DE SAN-PEDRO", "nIdcommune":17 }, { "sNomCommune":"REGION DE SAN-PEDRO", "nIdcommune":17 }, { "sNomCommune":"MAIRIE DE BINGERVILLE", "nIdcommune":2 } ], "codEtat":200, "mesRetour":"" }
 
-
-ROUTE: /netCollect/Contribuable/1
+ROUTE: /netCollect/BAE1501926181/24/b6h2Ve1119r6s2a7XPJcai9boPgusYr0hje8sxpYcyvFMazeV1yanPWt0dPUVsrIrVp7tKQreHjsKtNprP85c1ryg73srssys26r
 RESPONSE:
-{ "tabListeCommune":[  ], "codEtat":401, "mesRetour":" Token inactif" }
+{ "listeActivi":[ { "nIdActivite":281474976745619, "sNomActivite":"NEANT", "sSituationGeo":"Marche cafetou", "sTypeActivite":"VENTE" } ], "messaRetour":"Liste des activit\u00e9s", "codeEtat":200 }
 
-
-ROUTE: /netCollect/Contribuable/1/1
+ROUTE: /netCollect/Taxes/7333/7333/b6h2Ve1119r6s2a7XPJcai9boPgusYr0hje8sxpYcyvFMazeV1yanPWt0dPUVsrIrVp7tKQreHjsKtNprP85c1ryg73srssys26r
 RESPONSE:
-{ "listeActivi":[  ], "messaRetour":" Token inactif", "codeEtat":401 }
+{ "tabListeTaxe":[ { "nIdLiaison":49577, "sLibelleTaxe":"TAXE FORFAITAIRE 1", "nMontantTaxe":1500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":49579, "sLibelleTaxe":"TAXE FORFAITAIRE 3", "nMontantTaxe":3000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":49582, "sLibelleTaxe":"AFFICHE PEINTE", "nMontantTaxe":2000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":49584, "sLibelleTaxe":"TAXE SUR LA PUBLICITE 1", "nMontantTaxe":3000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":29875, "sLibelleTaxe":"ODP", "nMontantTaxe":3000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":29876, "sLibelleTaxe":"TAXE FORFAITAIRE 1", "nMontantTaxe":1500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":29877, "sLibelleTaxe":"TAXE FORFAITAIRE 3", "nMontantTaxe":2500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":29878, "sLibelleTaxe":"TAXE FORFAITAIRE 5", "nMontantTaxe":2500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":29879, "sLibelleTaxe":"TAXE PUBLICITE", "nMontantTaxe":5000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":47616, "sLibelleTaxe":"ODP 2", "nMontantTaxe":1500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":47617, "sLibelleTaxe":"ODP 3", "nMontantTaxe":6500, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":47619, "sLibelleTaxe":"TAXE SUR LA PUBLICIT\u00c9 2", "nMontantTaxe":1000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":40977, "sLibelleTaxe":"TAXE DE STATIONNEMENT", "nMontantTaxe":5000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":39287, "sLibelleTaxe":"TAXE FORFAITAIRE 2", "nMontantTaxe":2000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2020 }, { "nIdLiaison":14165, "sLibelleTaxe":"TAXE FORFAITAIRE 2", "nMontantTaxe":2000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2018 }, { "nIdLiaison":12390, "sLibelleTaxe":"TAXE FORFAITAIRE 4", "nMontantTaxe":4000, "sPeriodicite":"MENSUELLE", "nIdActivite":7333, "nAnneeExecution":2018 } ], "nIdContrCarte":0, "codeEtat":200, "mesRetour":"" 
 
-
-ROUTE: /netCollect/Taxes/1/1
+ROUTE: /Auth
+PAYLOAD:
+{"Key":"test","Secret":"test"}
 RESPONSE:
-{ "listeActivi":[  ], "messaRetour":" Token inactif", "codeEtat":401 }
+{ "Token":"eMoT230mrsUr6sIUj0ronVEZ10Axj8R12nbJyu1n2e07qP0CcsJsHrn0ezetiVhUA58h09U2ng64PsBbs8irkpGRixPk719132cA", "Code":200, "Contenu":"Connexion reussie" }
 
+ROUTE: /netCollect/paiementTaxe/49577/49929598/eMoT230mrsUr6sIUj0ronVEZ10Axj8R12nbJyu1n2e07qP0CcsJsHrn0ezetiVhUA58h09U2ng64PsBbs8irkpGRixPk719132cA
+RESPONSE:
+{ "reference":"D32N6FLF615HRC", "datePaiement":"0019-08-20T20:01:07.002", "codeEat":200, "response":"OK", "periodePaye":"FEVRIER" }
+
+# API DISPOSIT
+ROUTE: /Auth
+PAYLOAD:
+{"Key":"test","Secret":"test"}
+RESPONSE:
+{ "Token":"kLP0TIr8TrtceDwzs4Tesd98Ntk5fRdFLO0j2phF1VMeneReqPPtasP0BpDes0t9RrK83Y0etX7iiWPg05U9jHUa008L1ss0WEVc", "Code":200, "Contenu":"Connexion reussie" }
 
 ROUTE: /Demande/Operation
 PAYLOAD:
-{"token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8","typeOperation":"Depot","montant":"2547880","numclient":"49929598"}
+{"tokenP":"kLP0TIr8TrtceDwzs4Tesd98Ntk5fRdFLO0j2phF1VMeneReqPPtasP0BpDes0t9RrK83Y0etX7iiWPg05U9jHUa008L1ss0WEVc","typeOperation":"Depot","montant":"50000","numclient":"49929598"}
 RESPONSE:
-{ "cleretour":" Token inactif", "code":401 }
+{ "cleretour":"Le depot de50000 sur le numero: 49929598 a ete effectue avec succes", "code":200 }
 
+ROUTE: /Auth
+PAYLOAD:
+{"Key":"test","Secret":"test"}
+RESPONSE:
+{ "Token":"9XgvauauVoe3Ss12ejeLBltX17zsKl1JKtMX8r1onTs1X60MF02TsTqossspFfr95fs509AXoTlqYu0tu8cb2Ke1JtvmFsy2qeZ4", "Code":200, "Contenu":"Connexion reussie" }
 
+# API RETRAIT
 ROUTE: /Demande/Operation
 PAYLOAD:
-{"token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8","typeOperation":"Retrait","montant":"2547880","numclient":"49929598"}
+{"tokenP":"9XgvauauVoe3Ss12ejeLBltX17zsKl1JKtMX8r1onTs1X60MF02TsTqossspFfr95fs509AXoTlqYu0tu8cb2Ke1JtvmFsy2qeZ4","typeOperation":"Retrait","montant":"3000","numclient":"49929598"}
 RESPONSE:
-{ "cleretour":" Token inactif", "code":401 }
+{ "cleretour":"Un code de validation est envoye au numero: 49929598", "code":200 }
 
-
-[Normalement cette route n'est pas disponible vue que la demande de Retrait a échoué]
 ROUTE: /Client/Debiter
 PAYLOAD:
-{"token":"eWE9T6MrWaKNrDIoD2jsA089tATY0rV8PTwPQrs0ar6vT1or81VM7WZoRO8DYtrTusp9q02o60S5tE0O2D9MUzPYjo7jn9eo7yY8","codeTransaction":"2547880"}
+{"token":"wvctd0oV0WMrtd2DoostT0EjLBrwPswtC75no231XQD0DT1GcL8dT8TezTyeno10MbeM08s7EPtaPWIsBBfrp0zPHr0staMHqr2n","codeTransaction":"B5Q8"}
 RESPONSE:
-{"fault" : {"faultcode" : "server", "faultstring" : "Erreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle 
-de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors 
-des ajouts.", "detail" : "Appel WL :\nTraitement de 'Procédure globale debiteClient (serveur)' (ProcéduresServeur.debiteClient), ligne 99\n\nQue s'est-il passé ?\nErreur renvoyée par le serveur <localhost:4900> :\nImpossible d'accéder au fichier.\nLa description de <Client> stockée dans l'analyse est incompatible avec celle de <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>.\nLa rubrique clé unique <IdTelPrincipal> n'existe 
-pas dans l'analyse.\nLes descriptions ne sont pas compatibles car il y a un risque d'erreurs de doublons lors des ajouts.\n\nCode erreur : 70016\nNiveau : erreur fatale\nCode erreur WD55 : 16\n\nDump de l'erreur du module 'WDHFSRV64.DLL' (25.0.277.1).\nIdentifiant des informations détaillées (.err) : 72136\nInformations de débogage :\nIEWDHFSRV=32.10\nModule=<WDHFSRV>\nVersion=<25.0.277.1>\nInformations supplémentaires :\nEIT_TYPE_WDFILE : <7>\nEIT_IDCODE : <458752>\nEIT_LOGICALTABLENAME : <Client>\nEIT_PATHFIC : <e:\\ServeurHFSQL BMICI\\BDD\\TRESOR_MONEY\\Client>\nEIT_SERVEURCS : <localhost:4900>\nEIT_PILEWL :\nProcédure globale debiteClient (serveur) (ProcéduresServeur.debiteClient), ligne 99\nEIT_DATEHEURE : 18/08/2020 18:57:07\nEIT_CODEHTTP : <500>"}}
-
-Note:
-Veuillez considérer les messages d'erreurs au niveau de RESPONSE.
+{ "nomPrenomClient":"DAKIA Franck", "NumeroClent":"49929598", "codeEtat":"200", "messageEtat":"Operation effectuee avec succes" }

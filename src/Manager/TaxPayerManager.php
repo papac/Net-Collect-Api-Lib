@@ -37,10 +37,8 @@ class TaxPayerManager extends BaseManager
      */
     public function municipalities($taxpayer_id)
     {
-        $taxpayer_id = (int) $taxpayer_id;
-
         $url = sprintf(
-            '/netCollect/Contribuable/%s',
+            '/netCollect/%s/%s',
             $taxpayer_id,
             $this->auth->getToken()
         );
@@ -53,17 +51,14 @@ class TaxPayerManager extends BaseManager
     /**
      * Get list of tax payer activities
      *
-     * @param int $taxpayer_id
-     * @param int $municipality_id
+     * @param string $taxpayer_id
+     * @param string $municipality_id
      * @return array
      */
     public function activities($taxpayer_id, $municipality_id)
     {
-        $taxpayer_id = (int) $taxpayer_id;
-        $municipality_id = (int) $municipality_id;
-
         $url = sprintf(
-            '/netCollect/Contribuable/%s/%s',
+            '/netCollect/%s/%s/%s',
             $taxpayer_id,
             $municipality_id,
             $this->auth->getToken()
@@ -77,19 +72,37 @@ class TaxPayerManager extends BaseManager
     /**
      * Get tax list for tax payer by activity
      *
-     * @param int $taxpayer_id
-     * @param int $activity_id
+     * @param string $taxpayer_id
+     * @param string $activity_id
      * @return array
      */
     public function tax($taxpayer_id, $activity_id)
     {
-        $taxpayer_id = (int) $taxpayer_id;
-        $activity_id = (int) $activity_id;
-
         $url = sprintf(
-            '/netCollect/Taxes/%s/%s',
+            '/netCollect/Taxes/%s/%s/%s',
             $taxpayer_id,
             $activity_id,
+            $this->auth->getToken()
+        );
+
+        $response = CurlHttp::request($url);
+
+        return $response;
+    }
+
+    /**
+     * Make tax payment
+     * 
+     * @param string $tax_id
+     * @param string $number
+     * @return array
+     */
+    public function payTax($tax_id, $number)
+    {
+        $url = sprintf(
+            '/netCollect/paiementTaxe/%s/%s/%s',
+            $tax_id,
+            $number,
             $this->auth->getToken()
         );
 
