@@ -75,3 +75,7 @@ PAYLOAD:
 {"token":"wvctd0oV0WMrtd2DoostT0EjLBrwPswtC75no231XQD0DT1GcL8dT8TezTyeno10MbeM08s7EPtaPWIsBBfrp0zPHr0staMHqr2n","codeTransaction":"B5Q8"}
 RESPONSE:
 { "nomPrenomClient":"DAKIA Franck", "NumeroClent":"49929598", "codeEtat":"200", "messageEtat":"Operation effectuee avec succes" }
+
+##
+- Est-ce possible de payer plusieur fois les taxes en cas de retartd du contribuable
+- Est-ce possible aussi de voir les mois ou le nombre de mois impayé du contribuable
