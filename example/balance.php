@@ -4,12 +4,12 @@ require __DIR__.'/../vendor/autoload.php';
 
 use CNIT\NetCollect\Manager\AccountManager;
 
-if ($_GET['action'] == 'get_balance') {
+if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 	$authentication = require __DIR__.'/inc/auth.php';
 	// Account Manager
 	$account_manager = new AccountManager($authentication);
 	// Get balance
-	$response = $account_manager->balance($_POST['TelPrincipal']);
+	$response = (array) $account_manager->balance($_POST['TelPrincipal']);
 	$solde = 0;
 
 	foreach($response['TabSolde'] as $tabSolde) {

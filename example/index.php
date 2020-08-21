@@ -1,3 +1,29 @@
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use CNIT\NetCollect\Manager\AccountManager;
+
+$error = false;
+
+if (isset($_GET['action']) && $_GET['action'] == 'create_account') {
+	$authentication = require __DIR__.'/inc/auth.php';
+	// Account Manager
+	$account_manager = new AccountManager($authentication);
+	// Register a new account
+	try {
+		$response = $account_manager->register(
+			$_POST['Nom'],
+			$_POST['Prenom'],
+			(int) $_POST['IDCivilite'],
+			$_POST['TelPrincipal'],
+			$_POST['TelInitilisation']
+		);
+	} catch (\Exception $e) {
+		$error = $e->getMessage();
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +36,21 @@
 
 	<div class="container">
 		<div class="col-sm-offset-4 col-sm-4" style="margin-top: 50px">
-			<form action="action.php?action=create_account" method="post">
+			<?php if ($error !== false): ?>
+			<div class="alert alert-danger">
+				<?= $error ?>
+			</div>
+			<?php endif; ?>
+			<form action="?action=create_account" method="post">
 				<fieldset>
 					<legend>Création de compte</legend>
 					<div class="form-group">
 						<label for="nom">Nom</label>
-						<input type="text" name="Nom" class="form-control">
+						<input type="text" placeholder="Nom" value="<?= $_POST['Nom'] ?? '' ?>" name="Nom" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Prénom</label>
-						<input type="text" name="Prenom" class="form-control">
+						<input type="text" placeholder="Prenom" value="<?= $_POST['Prenom'] ?? '' ?>" name="Prenom" class="form-control">
 					</div>
 					<div class="form-group">
 						<label>Civilité</label>
@@ -31,11 +62,11 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Téléphone principal</label>
-						<input type="text" name="TelPrincipal" class="form-control">
+						<input type="text" name="TelPrincipal" value="<?= $_POST['TelPrincipal'] ?? '' ?>" placeholder="Téléphone principal" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Téléphone de sécours</label>
-						<input type="text" name="TelInitilisation" class="form-control">
+						<input type="text" name="TelInitilisation" value="<?= $_POST['TelInitilisation'] ?? '' ?>" placeholder="Téléphone de sécours" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-primary">Enrégister</button>
 				</fieldset>
