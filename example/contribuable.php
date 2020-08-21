@@ -8,33 +8,44 @@
 <body>
 	<?php include __DIR__.'/inc/navbar.php'; ?>
 	<div class="container" style="margin-top: 50px">
-		<div class="col-sm-offset-2 col-sm-4">
+		<div class="col-sm-offset-2 col-sm-8">
 			<form>
 				<fieldset>
-					<legend>Dépot</legend>
+					<legend>Recherches</legend>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" placeholder="Votre numéro de téléphone" name="TelPrincipal" class="form-control">
+						<label for="exampleInputEmail1">Entrer un chiffre</label>
+						<input type="text" placeholder="Un index" name="search" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Séléctionnez un mode</label>
+						<select class="form-control" name="search_code">
+							<option value="1">N° de carte de contribuable</option>
+							<option value="2">N° de téléphone du contribuable</option>
+						</select>
 					</div>
 					<div class="form-group form-check">
-						<button type="submit">Confirmer</button>
+						<button type="submit" class="btn btn-primary">Recherchez</button>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-		<div class="col-sm-4">
-			<form>
-				<fieldset>
-					<legend>Retrait</legend>
-					<div class="form-group">
-						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" name="TelPrincipal" class="form-control">
+
+		<div class="col-sm-offset-2 col-sm-8">
+			<div>
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Communes</a></li>
+					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Activité</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						
 					</div>
-					<div class="form-group form-check">
-						<button type="submit">Confirmer</button>
+					<div role="tabpanel" class="tab-pane" id="profile">
+						
 					</div>
-				</fieldset>
-			</form>
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -17,6 +17,7 @@
         <li><a href="index.php">Créer un compte</a></li>
         <li><a href="transaction.php">Transaction</a></li>
         <li><a href="balance.php">Balance</a></li>
+        <li><a href="contribuable.php">Contribuable</a></li>
       </ul>
 <!--       <form class="navbar-form navbar-left">
         <div class="form-group">
