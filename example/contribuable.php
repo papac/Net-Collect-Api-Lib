@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Net-Collect</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<body>
+	<?php include __DIR__.'/inc/navbar.php'; ?>
+	<div class="container" style="margin-top: 50px">
+		<div class="col-sm-offset-2 col-sm-4">
+			<form>
+				<fieldset>
+					<legend>Dépot</legend>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
+						<input type="text" name="TelPrincipal" class="form-control">
+					</div>
+					<div class="form-group form-check">
+						<button type="submit">Confirmer</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-sm-4">
+			<form>
+				<fieldset>
+					<legend>Retrait</legend>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
+						<input type="text" name="TelPrincipal" class="form-control">
+					</div>
+					<div class="form-group form-check">
+						<button type="submit">Confirmer</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>

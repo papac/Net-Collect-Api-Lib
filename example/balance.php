@@ -7,37 +7,18 @@
 </head>
 <body>
 	<?php include __DIR__.'/inc/navbar.php'; ?>
-
 	<div class="container">
 		<div class="col-sm-offset-4 col-sm-4" style="margin-top: 50px">
-			<form action="action.php?action=create_account" method="post">
+			<form action="action.php?action=get_balance">
 				<fieldset>
-					<legend>Création de compte</legend>
+					<legend>Affichez votre balance</legend>
 					<div class="form-group">
-						<label for="nom">Nom</label>
-						<input type="text" name="Nom" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Prénom</label>
-						<input type="text" name="Prenom" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>Civilité</label>
-						<select class="form-control" name="IDCivilite">
-							<option value="1">Monsieur</option>
-							<option value="2">Madame</option>
-							<option value="3">Mademoiselle</option>
-						</select>					
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Téléphone principal</label>
+						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
 						<input type="text" name="TelPrincipal" class="form-control">
 					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Téléphone de sécours</label>
-						<input type="text" name="TelInitilisation" class="form-control">
+					<div class="form-group form-check">
+						<button type="submit">Vérifiez</button>
 					</div>
-					<button type="submit" class="btn btn-primary">Enrégister</button>
 				</fieldset>
 			</form>
 		</div>

@@ -7,23 +7,31 @@ use CNIT\NetCollect\Manager\AccountManager;
 use CNIT\NetCollect\Manager\TaxPayerManager;
 use CNIT\NetCollect\Manager\TransactionManager;
 
+die($_GET['action']);
+
 // Authentication
 $key = "test";
 $secret = "test";
 $authentication = (new Authentication($key, $secret))->auth();
 
-if ($_GET['action'] == 'new_account') {
+if ($_GET['action'] == 'create_account') {
 	// Account Manager
 	$account_manager = new AccountManager($authentication);
 	// Register a new account
-	$response = $account_manager->register('DAKIA', 'Franck', AccountManager::CIVILITE_MONSIEUR, '49929598', '52797005');
+	$response = $account_manager->register(
+		$_POST['Nom'],
+		$_POST['Prenom'],
+		(int) $_POST['IDCivilite'],
+		$_POST['TelPrincipal'],
+		$_POST['TelInitilisation']
+	);
 }
 
 else if ($_GET['action'] == 'account_validation') {
 	// Account Manager
 	$account_manager = new AccountManager($authentication);
 	// Validation de compte avec le code OTP
-	$response = $account_manager->validation($code = '1GYY');
+	$response = $account_manager->validation($_POST['code']);
 }
 
 else if ($_GET['action'] == 'get_balance') {
@@ -90,8 +98,7 @@ else if ($_GET['action'] == 'withdraw_cash') {
 }
 
 else {
-
-	return [];
+	die(json_encode(['error' => true]));
 }
 
-return 
+die(json_encode($response));
