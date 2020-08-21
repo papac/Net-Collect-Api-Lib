@@ -1,25 +1,49 @@
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use CNIT\NetCollect\Manager\AccountManager;
+
+if ($_GET['action'] == 'get_balance') {
+	$authentication = require __DIR__.'/inc/auth.php';
+	// Account Manager
+	$account_manager = new AccountManager($authentication);
+	// Get balance
+	$response = $account_manager->balance($_POST['TelPrincipal']);
+	$solde = 0;
+
+	foreach($response['TabSolde'] as $tabSolde) {
+		$solde += $tabSolde['nSolde'];
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Net-Collect</title>
-<!-- Latest compiled and minified CSS -->
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
 	<?php include __DIR__.'/inc/navbar.php'; ?>
 	<div class="container">
 		<div class="col-sm-offset-4 col-sm-4" style="margin-top: 50px">
-			<form action="action.php?action=get_balance">
+			<form action="?action=get_balance" method="post">
 				<fieldset>
 					<legend>Affichez votre balance</legend>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" name="TelPrincipal" class="form-control">
+						<input type="text" name="TelPrincipal" value="<?= $_POST['TelPrincipal'] ?? '' ?>" class="form-control">
 					</div>
 					<div class="form-group form-check">
 						<button type="submit">Vérifiez</button>
 					</div>
 				</fieldset>
+				<?php if (isset($solde)): ?>
+				<div class="alert alert-info">
+					<h2>Solde: <?= $solde ?> FCFA</h2>
+				</div>
+				<?php endif; ?>
 			</form>
 		</div>
 	</div>

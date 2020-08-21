@@ -21,11 +21,8 @@ class CurlHttp
         $curl = curl_init(CurlHttp::BASE_URL.$url);
         $headers = ['Content-Type: application/json'];
 
-        echo "ROUTE: ".$url."\n";
-
         if (is_array($payload)) {
             $payload = json_encode($payload);
-            echo "PAYLOAD:\n".$payload."\n";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
             $headers[] = 'Content-Length: '.strlen($payload);
         } else {
@@ -41,7 +38,6 @@ class CurlHttp
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 
         $response = curl_exec($curl);
-        echo "RESPONSE:\n".$response."\n\n";
 
         if (curl_errno($curl)) {
             $message = curl_error($curl);
