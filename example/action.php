@@ -83,14 +83,14 @@ else if ($_GET['action'] == 'cash_deposit') {
 }
 
 
-else if ($_GET['action'] == 'cash_deposit') {
+else if ($_GET['action'] == 'withdraw_cash') {
 	// Transaction Manager
 	$transaction_manager = new TransactionManager($authentication);
 	// Retrait de fond
 	$response = $transaction_manager->withdrawMoney($amount = "3000", $number = "49929598");
 }
 
-else if ($_GET['action'] == 'withdraw_cash') {
+else if ($_GET['action'] == 'withdraw_cash_validation') {
 	// Transaction Manager
 	$transaction_manager = new TransactionManager($authentication);
 	// Validation de code
