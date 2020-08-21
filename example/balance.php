@@ -4,6 +4,10 @@ require __DIR__.'/../vendor/autoload.php';
 
 use CNIT\NetCollect\Manager\AccountManager;
 
+if (!isset($_GET['action'])) {
+	$_GET['action'] = false;
+}
+
 if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 	$authentication = require __DIR__.'/inc/auth.php';
 	// Account Manager

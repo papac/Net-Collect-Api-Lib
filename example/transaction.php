@@ -6,6 +6,10 @@ use CNIT\NetCollect\Manager\TransactionManager;
 
 $response = [];
 
+if (!isset($_GET['action'])) {
+	$_GET['action'] = false;
+}
+
 if (!empty($_POST) && $_GET['action'] == 'cash_deposit') {
 	$authentication = require __DIR__.'/inc/auth.php';
 	// Transaction Manager
