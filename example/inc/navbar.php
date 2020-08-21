@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Net Collect Service</a>
+      <a class="navbar-brand" href="#">Simulateur Net Collect Service</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
