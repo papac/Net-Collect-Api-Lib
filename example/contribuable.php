@@ -14,7 +14,7 @@
 					<legend>Dépot</legend>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" name="TelPrincipal" class="form-control">
+						<input type="text" placeholder="Votre numéro de téléphone" name="TelPrincipal" class="form-control">
 					</div>
 					<div class="form-group form-check">
 						<button type="submit">Confirmer</button>

@@ -33,7 +33,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 					<legend>Affichez votre balance</legend>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" name="TelPrincipal" value="<?= $_POST['TelPrincipal'] ?? '' ?>" class="form-control">
+						<input type="text" placeholder="Entrer votre numéro de téléphone" name="TelPrincipal" value="<?= $_POST['TelPrincipal'] ?? '' ?>" class="form-control">
 					</div>
 					<div class="form-group form-check">
 						<button type="submit">Vérifiez</button>
