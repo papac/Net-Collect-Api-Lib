@@ -13,7 +13,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 	// Account Manager
 	$account_manager = new AccountManager($authentication);
 	// Get balance
-	$response = (array) $account_manager->balance($_POST['TelPrincipal']);
+	$response = (array) $account_manager->balance($_GET['TelPrincipal']);
 	$solde = 0;
 
 	foreach($response['TabSolde'] as $tabSolde) {
@@ -32,12 +32,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 	<?php include __DIR__.'/inc/navbar.php'; ?>
 	<div class="container">
 		<div class="col-sm-offset-4 col-sm-4" style="margin-top: 50px">
-			<form action="?action=get_balance" method="post">
+			<form action="balance.php">
 				<fieldset>
 					<legend>Affichez votre balance</legend>
 					<div class="form-group">
+						<input type="hidden" name="action" value="get_balance">
 						<label for="exampleInputEmail1">Entrer votre numéro de téléphone</label>
-						<input type="text" placeholder="Entrer votre numéro de téléphone" name="TelPrincipal" value="<?= $_POST['TelPrincipal'] ?? '' ?>" class="form-control">
+						<input type="text" placeholder="Entrer votre numéro de téléphone" name="TelPrincipal" value="<?= $_GET['TelPrincipal'] ?? '' ?>" class="form-control">
 					</div>
 					<div class="form-group form-check">
 						<button type="submit">Vérifiez</button>
@@ -45,7 +46,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 				</fieldset>
 				<?php if (isset($solde)): ?>
 				<div class="alert alert-info">
-					<h2>Solde: <?= $solde ?> FCFA</h2>
+					<h2>Solde: <b><?= $solde ?> FCFA</b></h2>
 				</div>
 				<?php endif; ?>
 			</form>
