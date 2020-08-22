@@ -192,7 +192,6 @@ else if (!empty($_GET) && $_GET['action'] == 'pay_tax') {
 
 				if (html.length > 0) {
 					$('#tabListeTaxe').html(html);
-					$('#taxLists').DataTable();
 				}
 			});
 		});
