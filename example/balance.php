@@ -41,7 +41,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'get_balance') {
 						<input type="text" placeholder="Entrer votre numéro de téléphone" name="TelPrincipal" value="<?= $_GET['TelPrincipal'] ?? '' ?>" class="form-control">
 					</div>
 					<div class="form-group form-check">
-						<button type="submit">Vérifiez</button>
+						<button type="submit" class="btn btn-success">Vérifiez</button>
 					</div>
 				</fieldset>
 				<?php if (isset($solde)): ?>
