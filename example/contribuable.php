@@ -200,7 +200,7 @@ else if (!empty($_GET) && $_GET['action'] == 'pay_tax') {
 			let number = prompt("Entrez un numéro TrésorMoney: ");
 			let url = `contribuable.php?action=pay_tax&number=${number}&tax_id=${tax_id}`;
 			$.get(url, function(data) {
-				if (data.codeEtat == 200) {
+				if (data.codeEat == 200) {
 					alert('Reference: ' + data.reference + ' - paiement du mois: ' + data.periodePaye);
 				} else {
 					alert(data.response);
